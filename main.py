@@ -54,16 +54,15 @@ def saludo():
 
 
 def clima():
-    api_address = 'https://api.openweathermap.org/data/2.5/weather?appid=4369b55a0d2b99d0dfabd006ca894f40&units=metric&lang=es&q='
+    api_address = 'https://api.weatherbit.io/v2.0/current?key=ec9c825a578f4e9b8ce68b321d331b84&lang=es&city='
     speak("Dime el nombre de la ciudad")
     city = get_audio()
-    print(city)
 
     url = api_address + city
     respuesta = requests.get(url)
     clima = respuesta.json()
 
-    datos_clima = clima['weather'][0]['description'] + ". La temperatura actualmente es de" + str(clima['main']['temp']) + "grados"
+    datos_clima = clima['data'][0]['weather']['description'] + " . La temperatura actualmente es de" + str(clima['data'][0]['temp']) + "grados"
 
     speak(datos_clima)
 
