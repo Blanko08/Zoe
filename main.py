@@ -77,12 +77,23 @@ while True:
         print("Escuchando...")
         text = get_audio()
 
-        if 'hola' in text:
-            speak("¿Hola, como estás?")
-        elif 'como te llamas' or 'cual es tu nombre' in text:
-            speak("Me llamo Zoe")
-        elif 'tiempo' or 'clima' in text:
-            clima()
-        elif 'apagate' in text:
-            speak("Hasta luego")
-            break
+        saludo_strs = ["hola", "saludos"]
+        for phrase in saludo_strs:
+            if phrase in text:
+                speak("¿Hola, como estás?")
+
+        nombre_strs = ["cómo te llamas", "cuál es tu nombre"]
+        for phrase in nombre_strs:
+            if phrase in text:
+                speak("Me llamo Zoe")
+
+        clima_strs = ["dime el tiempo", "dime el clima"]
+        for phrase in clima_strs:
+            if phrase in text:
+                clima()
+
+        exit_strs = ["apágate zoe", "adiós zoe"]
+        for phrase in exit_strs:
+            if phrase in text:
+                speak("Hasta luego")
+                break
