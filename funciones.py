@@ -49,6 +49,7 @@ def despertar(text):
     #Devuelve Falso si no encuentra la palabra que hace despertar a Zoe
     return False
 
+#Función para saber el clima
 def clima():
     api_address = 'https://api.weatherbit.io/v2.0/current?key=ec9c825a578f4e9b8ce68b321d331b84&lang=es&city='
     speak("Dime el nombre de la ciudad")
