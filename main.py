@@ -1,18 +1,20 @@
 import funciones
-import kivy
-from kivy.app import App
-from kivy.uix.widget import Widget
+from kivymd.app import MDApp
+from kivy.lang.builder import Builder
+from kivy.core.window import Window
+from kivymd.theming import ThemeManager
 
 
-class Contenedor(Widget):
-    pass
+Window.size = (300, 500) #Temporalmente durante el desarrollo de la app
 
-class ZoeApp(App):
+class Zoe(MDApp):
     def build(self):
-        return Contenedor()
+        return Builder.load_file("zoe.kv")
 
-if __name__ == "__main__":
-    ZoeApp().run()
+    def screen_settings(self):
+        self.screen_manager.current = 'settings'
+
+Zoe().run()
 
 
 '''

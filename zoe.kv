@@ -1,3 +1,61 @@
-<Contenedor>
-    Label:
-        text: "Hola Mundo"
+Screen:
+    MDNavigationLayout:
+        ScreenManager:
+            id: screen_manager
+
+            Screen:
+                name: "main"
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    MDToolbar:
+                        title: "Zoe"
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                        elevation: 8
+
+                    MDLabel:
+                        text: "Hola"
+                        halign: 'center'
+
+            Screen:
+                name: "screen_settings"
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    MDToolbar:
+                        title: "Settings"
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                        elevation: 8
+
+                    MDLabel:
+                        text: "Settings"
+                        halign: 'center'
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '8dp'
+                padding: '8dp'
+
+                MDLabel:
+                    text: "Menu"
+                    font_style: 'Subtitle1'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+
+                ScrollView:
+                    MDList:
+                        OneLineIconListItem:
+                            text: "Main"
+                            on_release:
+                                screen_manager.current = "main"
+                            IconLeftWidget:
+                                icon: 'home'
+                        OneLineIconListItem:
+                            text: "Settings"
+                            on_release:
+                                screen_manager.current = "screen_settings"
+                            IconLeftWidget:
+                                icon: 'cog-outline'
