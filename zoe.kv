@@ -17,6 +17,12 @@ Screen:
                         text: "Hola"
                         halign: 'center'
 
+                    MDFloatingActionButton:
+                        icon: 'microphone'
+                        pos_hint: {'center_x': .5}
+                        md_bg_color: app.theme_cls.primary_color
+                        on_release: app.wake_up()
+
             Screen:
                 name: "screen_settings"
                 BoxLayout:
@@ -27,9 +33,23 @@ Screen:
                         left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
                         elevation: 8
 
-                    MDLabel:
-                        text: "Settings"
-                        halign: 'center'
+                    FloatLayout:
+
+                        MDIcon:
+                            icon: 'weather-night'
+                            pos_hint: {"x": .25, "top": .9}
+                            size_hint: (.1, .1)
+
+                        MDLabel:
+                            text: "Night mode"
+                            pos_hint: {"x": .35, "top": .9}
+                            size_hint: (1, .1)
+
+                        MDSwitch:
+                            id: mode
+                            pos_hint: {"x": .65, "top": .9}
+                            size_hint: (.1, .1)
+                            on_active: app.night_mode(*args)
 
         MDNavigationDrawer:
             id: nav_drawer

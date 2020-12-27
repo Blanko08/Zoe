@@ -2,10 +2,10 @@ import funciones
 from kivymd.app import MDApp
 from kivy.lang.builder import Builder
 from kivy.core.window import Window
-from kivymd.theming import ThemeManager
 
 
 Window.size = (300, 500) #Temporalmente durante el desarrollo de la app
+boton_despertar = False
 
 class Zoe(MDApp):
     def build(self):
@@ -14,15 +14,23 @@ class Zoe(MDApp):
     def screen_settings(self):
         self.screen_manager.current = 'settings'
 
+    def night_mode(self, checkbox,value):
+        if value:
+            self.theme_cls.theme_style = 'Dark'
+        else:
+            self.theme_cls.theme_style = 'Light'
+
+    def wake_up(self):
+        boton_despertar = True
+
+
 Zoe().run()
 
-
-'''
 while True:
     print("Escuchando...")
     text = funciones.get_audio().lower()
 
-    if funciones.despertar(text) == True:
+    if funciones.despertar(text) or boton_despertar == True:
         funciones.saludo()
         funciones.speak("¿En qué puedo ayudarte?")
         print("Escuchando...")
@@ -52,4 +60,4 @@ while True:
 
         except:
             funciones.speak("Repite de nuevo porfavor")
-'''
+
