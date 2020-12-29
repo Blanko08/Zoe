@@ -5,7 +5,6 @@ from threading import Thread
 
 
 Window.size = (300, 500) #Temporalmente durante el desarrollo de la app
-boton_despertar = False
 
 
 class Zoe(MDApp):
@@ -19,8 +18,8 @@ class Zoe(MDApp):
             self.theme_cls.theme_style = 'Light'
 
     def wake_up(self):
-        boton_despertar = True
-        return boton_despertar
+        t2 = Thread(target=funciones.ejecutar)
+        t2.start()
 
     def escuchando():
         while True:
@@ -28,35 +27,7 @@ class Zoe(MDApp):
             text = funciones.get_audio().lower()
 
             if funciones.despertar(text) == True:
-                funciones.saludo()
-                funciones.speak("¿En qué puedo ayudarte?")
-                print("Escuchando...")
-                try:
-                    text = funciones.get_audio()
-
-                    saludo_strs = ["hola", "saludos"]
-                    for phrase in saludo_strs:
-                        if phrase in text:
-                            funciones.speak("¿Hola, como estás?")
-
-                    nombre_strs = ["cómo te llamas", "cuál es tu nombre"]
-                    for phrase in nombre_strs:
-                        if phrase in text:
-                            funciones.speak("Me llamo Zoe")
-
-                    clima_strs = ["dime el tiempo", "dime el clima"]
-                    for phrase in clima_strs:
-                        if phrase in text:
-                            funciones.clima()
-
-                    exit_strs = ["apágate zoe", "adiós zoe"]
-                    for phrase in exit_strs:
-                        if phrase in text:
-                            funciones.speak("Hasta luego")
-                            return False
-
-                except:
-                    funciones.speak("Repite de nuevo porfavor")
+                funciones.ejecutar()
 
     t1 = Thread(target=escuchando)
     t1.daemon = True

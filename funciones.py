@@ -63,3 +63,34 @@ def clima():
     datos_clima = clima['data'][0]['weather']['description'] + " . La temperatura actualmente es de" + str(clima['data'][0]['temp']) + "grados"
 
     speak(datos_clima)
+
+def ejecutar():
+    saludo()
+    speak("¿En qué puedo ayudarte?")
+    print("Escuchando...")
+    try:
+        text = get_audio()
+
+        saludo_strs = ["hola", "saludos"]
+        for phrase in saludo_strs:
+            if phrase in text:
+                speak("¿Hola, como estás?")
+
+        nombre_strs = ["cómo te llamas", "cuál es tu nombre"]
+        for phrase in nombre_strs:
+            if phrase in text:
+                speak("Me llamo Zoe")
+
+        clima_strs = ["dime el tiempo", "dime el clima"]
+        for phrase in clima_strs:
+            if phrase in text:
+                clima()
+
+        exit_strs = ["apágate zoe", "adiós zoe"]
+        for phrase in exit_strs:
+            if phrase in text:
+                speak("Hasta luego")
+                return False
+
+    except:
+        speak("Repite de nuevo porfavor")
