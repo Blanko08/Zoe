@@ -1,6 +1,5 @@
 import datetime
 import pyttsx3
-import requests
 import speech_recognition as sr
 
 
@@ -48,49 +47,3 @@ def despertar(text):
 
     #Devuelve Falso si no encuentra la palabra que hace despertar a Zoe
     return False
-
-#Función para saber el clima
-def clima():
-    api_address = 'https://api.weatherbit.io/v2.0/current?key=ec9c825a578f4e9b8ce68b321d331b84&lang=es&city='
-    speak("Dime el nombre de la ciudad")
-    print("Escuchando...")
-    city = get_audio()
-
-    url = api_address + city
-    respuesta = requests.get(url)
-    clima = respuesta.json()
-
-    datos_clima = clima['data'][0]['weather']['description'] + " . La temperatura actualmente es de" + str(clima['data'][0]['temp']) + "grados"
-
-    speak(datos_clima)
-
-def ejecutar():
-    saludo()
-    speak("¿En qué puedo ayudarte?")
-    print("Escuchando...")
-    try:
-        text = get_audio()
-
-        saludo_strs = ["hola", "saludos"]
-        for phrase in saludo_strs:
-            if phrase in text:
-                speak("¿Hola, como estás?")
-
-        nombre_strs = ["cómo te llamas", "cuál es tu nombre"]
-        for phrase in nombre_strs:
-            if phrase in text:
-                speak("Me llamo Zoe")
-
-        clima_strs = ["dime el tiempo", "dime el clima"]
-        for phrase in clima_strs:
-            if phrase in text:
-                clima()
-
-        exit_strs = ["apágate zoe", "adiós zoe"]
-        for phrase in exit_strs:
-            if phrase in text:
-                speak("Hasta luego")
-                return False
-
-    except:
-        speak("Repite de nuevo porfavor")
