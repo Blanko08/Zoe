@@ -53,7 +53,7 @@ class Zoe(MDApp):
             print("Escuchando...")
             text = funciones.get_audio().lower()
 
-            if funciones.despertar(text) == True:
+            while funciones.despertar(text) == True:
                 Zoe.ejecutar(self)
 
     def ejecutar(self):
