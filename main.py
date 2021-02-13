@@ -1,11 +1,6 @@
 import funciones, requests
 from kivymd.app import MDApp
-from kivy.core.window import Window
 from threading import Thread
-
-
-Window.size = (300, 500) #Temporalmente durante el desarrollo de la app
-
 
 class Zoe(MDApp):
     def on_start(self):
