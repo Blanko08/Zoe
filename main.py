@@ -21,7 +21,7 @@ class Zoe(MDApp):
         t2.start()
 
     def clima(self):
-        api_address = 'https://api.weatherbit.io/v2.0/current?key=ec9c825a578f4e9b8ce68b321d331b84&lang=es&city='
+        api_address = 'https://api.weatherbit.io/v2.0/current?key=XXXXXXXXXXXXXXXX&lang=es&city='
         funciones.speak("Dime el nombre de la ciudad")
         print("Escuchando...")
         city = funciones.get_audio()
