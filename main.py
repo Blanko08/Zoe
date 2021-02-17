@@ -1,6 +1,7 @@
 import funciones, requests
 from kivymd.app import MDApp
 from threading import Thread
+import sys
 
 class Zoe(MDApp):
     def on_start(self):
@@ -21,7 +22,7 @@ class Zoe(MDApp):
         t2.start()
 
     def clima(self):
-        api_address = 'https://api.weatherbit.io/v2.0/current?key=XXXXXXXXXXXXXXXX&lang=es&city='
+        api_address = 'https://api.weatherbit.io/v2.0/current?key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&lang=es&city='
         funciones.speak("Dime el nombre de la ciudad")
         print("Escuchando...")
         city = funciones.get_audio()
@@ -77,7 +78,7 @@ class Zoe(MDApp):
             for phrase in exit_strs:
                 if phrase in text:
                     funciones.speak("Hasta luego")
-                    return False
+                    sys.exit()
 
         except:
             funciones.speak("Repite de nuevo porfavor")
