@@ -1,6 +1,6 @@
 # Zoe-Assistant
 
-Bienvenidos a Zoe, aplicación para Windows que sirve como asistente personal.
+Bienvenidos a Zoe, la aplicación para Windows que sirve como asistente personal.
 
 Funciones de Zoe:
 
